@@ -1,0 +1,20 @@
+version: "3.8"
+services:
+  cacttusDb:
+    image: postgres:13
+    ports:
+      - 127.0.0.1:5432:5432
+    volumes:
+      - ./postgres/init/:/docker-entrypoint-initdb.d/
+    environment:
+      POSTGRES_DB: jwt_security
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: user
+      PGDATA: /var/lib/postgresql/data/jwt_security
+    networks:
+      - backend
+
+networks:
+  backend:
+volumes:
+  my-db:
